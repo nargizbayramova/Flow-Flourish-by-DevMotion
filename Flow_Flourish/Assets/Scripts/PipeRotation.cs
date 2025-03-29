@@ -34,7 +34,7 @@ public class PipeRotation : MonoBehaviour
             pivotPoint.eulerAngles = new Vector3(0, 0, currentRotation);
 
             // Stop rotating once we have reached the target rotation (within a small threshold)
-            if (Mathf.Abs(targetRotation - currentRotation) < 0.1f)  // Small tolerance for accuracy
+            if (Mathf.Abs(targetRotation - currentRotation) == 0.0f)  // Small tolerance for accuracy
             {
                 Debug.Log("Current Rotation: " + currentRotation);
                 Debug.Log("Target Rotation: " + targetRotation);
