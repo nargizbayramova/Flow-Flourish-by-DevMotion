@@ -19,6 +19,6 @@ public class ManageObjects : MonoBehaviour
 
     public void StartGame(){
 
-        SceneManager.LoadScene("ExamplePipes");
+        SceneManager.LoadScene("PipeWithAutoGenerateGrid");
     }
 }
