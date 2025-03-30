@@ -1,3 +1,4 @@
+using UnityEditorInternal;
 using UnityEngine;
 
 public class PipeRotation : MonoBehaviour
@@ -19,6 +20,7 @@ public class PipeRotation : MonoBehaviour
         if (!isRotating)  // Only start rotation if it's not already rotating
         {
             isRotating = true;
+            Debug.Log(pivotPoint.eulerAngles);
             targetRotation = pivotPoint.eulerAngles.z + rotationAngle;  // Calculate target rotation (current pivot rotation + rotationAngle)
         }
     }
@@ -36,8 +38,6 @@ public class PipeRotation : MonoBehaviour
             // Stop rotating once we have reached the target rotation (within a small threshold)
             if (Mathf.Abs(targetRotation - currentRotation) == 0.0f)  // Small tolerance for accuracy
             {
-                Debug.Log("Current Rotation: " + currentRotation);
-                Debug.Log("Target Rotation: " + targetRotation);
                 isRotating = false;  // Stop rotation when we reach the target
             }
         }
