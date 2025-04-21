@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEditorInternal;
 using UnityEngine;
 
@@ -9,24 +10,31 @@ public class PipeRotation : MonoBehaviour
     private float targetRotation; // Target rotation angle
     private Transform pivotPoint; // Reference to the pivot point (parent)
 
+    [SerializeField] TMP_Text tapScore;
+    int score;
+
     void Start()
     {
+        tapScore= GameObject.Find("TapScore").GetComponent<TMP_Text>();
         // Get the reference to the parent object (pivot point)
         pivotPoint = transform.parent;
     }
 
     void OnMouseDown()
     {
-        if (!isRotating)  // Only start rotation if it's not already rotating
+        
+        if (score>0 && !isRotating)  // Only start rotation if it's not already rotating
         {
             isRotating = true;
-            Debug.Log(pivotPoint.eulerAngles);
+            score--;
+            tapScore.text=score.ToString();
             targetRotation = pivotPoint.eulerAngles.z + rotationAngle;  // Calculate target rotation (current pivot rotation + rotationAngle)
         }
     }
 
     void Update()
     {
+        score=int.Parse(tapScore.text);
         if (isRotating)
         {
             // Smoothly rotate the pivot point towards the target rotation
@@ -40,6 +48,7 @@ public class PipeRotation : MonoBehaviour
             {
                 isRotating = false;  // Stop rotation when we reach the target
             }
+
         }
     }
 }
