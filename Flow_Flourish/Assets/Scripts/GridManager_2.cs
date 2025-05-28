@@ -5,7 +5,7 @@ using TMPro;
 using UnityEditorInternal;
 using UnityEngine;
 
-public class PipeGridMAnager : MonoBehaviour
+public class GridManager_2 : MonoBehaviour
 {
     // 0 - Corner
     // 1 - Straight
@@ -14,28 +14,25 @@ public class PipeGridMAnager : MonoBehaviour
     public GameObject[] pipePrefabs; // Assign different pipe prefabs in Inspector
     public float cellSize; // Adjust spacing for 3D grid
     public int[,] levelPipeType = new int[,]{
-            { 0, 3,  1,  3,  0 },
-            { 1, 2,  1,  0,  2 },
-            { 2, 0,  0,  0,  3 },
-            { 0, 3,  0,  0,  2 },
-            { 0, 1,  2,  2,  1 },
-            { 0, 1,  0,  1,  1 }
+            { 1, 1, 0, 1, 2},
+            { 0, 0, 1, 2, 1},
+            { 0, 1, 1, 1, 0},
+            { 1, 0, 1, 1, 3},
+            { 0, 1, 0, 1, 0},
         };
     int[,] levelCorrectPath = new int[,]{
-            { 0, 0,  1,  0,  0 },
-            { 0, 0,  1,  0,  0 },
-            { 0, 0,  1,  1,  0 },
-            { 0, 0,  1,  1,  0 },
+            { 0, 0,  1,  1,  1 },
+            { 0, 0,  0,  0,  1 },
+            { 1, 1,  1,  1,  1 },
+            { 1, 0,  0,  0,  0 },
             { 1, 1,  1,  0,  0 },
-            { 1, 1,  1,  0,  0 }
         };
     int[,] levelCorrectPipeAngle = new int[,] {
-            { 0, 0,  90,  0,  0 },
-            { 0, 0,  90,  0,  0 },
             { 0, 0,  180,  0,  0 },
-            { 0, 0,  90,  270,  0 },
-            { 90, 0,  270,  0,  0 },
-            { 180, 0,  0,  0,  0 }
+            { 0, 0,  90,  0,  90 },
+            { 90, 0,  0,  0,  270 },
+            { 90, 0,  90,  270,  0 },
+            { 180, 0,  0,  0,  0 },
         };
 
     bool isSuccess = false;
