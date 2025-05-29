@@ -4,24 +4,26 @@ using UnityEngine.SceneManagement;
 
 public class LevelSelection : MonoBehaviour
 {
-    public Button[] levelButtons; // Assign all buttons in Inspector
+    public Button[] levelButtons;
 
     void Start()
     {
-        // Lock levels beyond Level 1 (initially)
+        // Unlock levels player has completed
         for (int i = 0; i < levelButtons.Length; i++)
         {
-            if (i > 0)
-                levelButtons[i].interactable = false;
+            bool isUnlocked = PlayerPrefs.GetInt("LevelUnlocked_" + (i + 1), 0) == 1 || i == 0;
+            levelButtons[i].interactable = isUnlocked;
+            levelButtons[i].transform.Find("LockIcon").gameObject.SetActive(!isUnlocked);
         }
     }
 
-    public void LoadLevel(int levelIndex)
+    public void LoadLevel(int levelNumber)
     {
-        // Save selected level (we'll use this later in PipeGrid)
-        PlayerPrefs.SetInt("CurrentLevel", levelIndex);
+        SceneManager.LoadScene("Level_" + levelNumber);
+    }
 
-        // Load the game scene
-        SceneManager.LoadScene("PipeWithAutoGenerateGrid");
+    public void BackToMenu()
+    {
+        SceneManager.LoadScene("StartScene");
     }
 }

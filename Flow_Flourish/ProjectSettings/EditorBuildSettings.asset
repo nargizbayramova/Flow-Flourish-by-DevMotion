@@ -15,9 +15,24 @@ EditorBuildSettings:
     path: Assets/Scenes/ExamplePipes.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
+    path: Assets/Scenes/Level_2.unity
+    guid: 26d93897586854ae68cc964abc94fe52
+  - enabled: 1
     path: Assets/Scenes/Level_6.unity
     guid: cd3a8c3975ac12640b3cfd26333dd2fd
   - enabled: 1
     path: Assets/Scenes/Pomodoro.unity
     guid: 7b8310f1889e44b739aef92f470d1d10
+  - enabled: 1
+    path: Assets/Scenes/Level_1.unity
+    guid: d53b86d5c270a4429a93f49d698e7e63
+  - enabled: 1
+    path: Assets/Scenes/Level_3.unity
+    guid: 84c71d52081a24cd1ae7bb800564fe0b
+  - enabled: 1
+    path: Assets/Scenes/Level_4.unity
+    guid: 53c0db8f30bb44e0d9b2675c69ed56b0
+  - enabled: 1
+    path: Assets/Scenes/Level_5.unity
+    guid: 49f7a4b9de25c4b29b128b84ad333341
   m_configObjects: {}
