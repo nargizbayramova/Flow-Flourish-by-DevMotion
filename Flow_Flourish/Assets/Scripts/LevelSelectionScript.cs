@@ -13,7 +13,13 @@ public class LevelSelection : MonoBehaviour
         {
             bool isUnlocked = PlayerPrefs.GetInt("LevelUnlocked_" + (i + 1), 0) == 1 || i == 0;
             levelButtons[i].interactable = isUnlocked;
-            levelButtons[i].transform.Find("LockIcon").gameObject.SetActive(!isUnlocked);
+
+            // SAFE WAY: Find child only if it exists
+            Transform lockIcon = levelButtons[i].transform.Find("LockIcon");
+            if (lockIcon != null)
+            {
+                lockIcon.gameObject.SetActive(!isUnlocked);
+            }
         }
     }
 

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEditorInternal;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GridManager_1 : MonoBehaviour
 {
@@ -129,6 +130,19 @@ public class GridManager_1 : MonoBehaviour
         isSuccess = true;
         attemptScore.text = "Success";
         Debug.Log("Succes");
+        // In the CheckSuccess() method, add this when player wins:
+        if (isSuccess)
+        {
+            attemptScore.text = "Success";
+
+            // Get current level number safely
+            string sceneName = SceneManager.GetActiveScene().name;
+            if (sceneName.Contains("_"))
+            {
+                int currentLevel = int.Parse(sceneName.Split('_')[1]);
+                PlayerPrefs.SetInt("LevelUnlocked_" + (currentLevel + 1), 1);
+            }
+        }
     }
 
     
